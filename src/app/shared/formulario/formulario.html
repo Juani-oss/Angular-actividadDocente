@@ -1,0 +1,133 @@
+<section class="bg-white rounded-3xl shadow-lg p-8 max-w-3xl mx-auto">
+
+  <h3 class="text-2xl font-semibold text-gray-800 mb-6">
+    {{titulo}} ✨
+  </h3>
+
+  <form (ngSubmit)="guardarComentario()" class="space-y-6">
+
+    
+    <div>
+      <label class="block text-sm font-medium text-gray-600 mb-2">
+        {{campo1}}
+      </label>
+      <input
+      [(ngModel)]="nuevoComentario.name"
+      name="name"
+        type="text"
+        placeholder="{{campo1}}"
+        class="w-full px-4 py-3 rounded-2xl border border-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-300"
+      />
+    </div>
+
+    <div>
+      <label class="block text-sm font-medium text-gray-600 mb-2">
+        {{campo2}}
+      </label>
+      <input
+      [(ngModel)]="nuevoComentario.producto"
+      name="producto"
+        type="text"
+        placeholder=" {{campo2}}"
+        class="w-full px-4 py-3 rounded-2xl border border-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-300"
+      />
+    </div>
+<div>
+      <label class="block text-sm font-medium text-gray-600 mb-2">
+        {{campo3}}
+      </label>
+      <input
+      [(ngModel)]="nuevoComentario.edad"
+      name="edad"
+        type="text"
+        placeholder="{{campo3}}"
+        class="w-full px-4 py-3 rounded-2xl border border-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-300"
+      />
+    </div>
+  
+    <div>
+      <label class="block text-sm font-medium text-gray-600 mb-2">
+        {{campo4}}
+      </label>
+      <textarea
+      [(ngModel)]="nuevoComentario.comen"
+      name="comen"
+        rows="4"
+        placeholder="{{campo4}}"
+        class="w-full px-4 py-3 rounded-2xl border border-blue-100 focus:outline-none focus:ring-2 focus:ring-blue-300 resize-none"
+      ></textarea>
+    </div>
+
+   
+    <div class="text-right">
+      <button
+        type="submit"
+        class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-xl shadow transition">
+        ENVIAR COMENTARIO
+      </button>
+    </div>
+
+  </form>
+
+</section>
+
+<section class="bg-[#FDF8F3] py-16">
+  <div class="max-w-6xl mx-auto px-6">
+
+    <!-- Título -->
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-semibold text-gray-800">
+        Lo que dicen nuestras clientas 💙
+      </h2>
+      <p class="text-gray-600 mt-3">
+        Experiencias reales con nuestros productos
+      </p>
+    </div>
+
+    <!-- Tabla moderna -->
+    <div class="bg-white rounded-3xl shadow-xl overflow-hidden">
+
+      <!-- Encabezado -->
+      <div class="grid grid-cols-5 bg-blue-50 text-blue-700 font-medium text-sm uppercase tracking-wide px-6 py-4">
+        <div>Cliente</div>
+        <div>Producto</div>
+        <div>Edad</div>
+        <div class="col-span-2">Testimonio</div>
+      </div>
+
+      <!-- Filas dinámicas -->
+      @for (comentario of listaComentario(); track comentario.id) {
+        <div class="grid grid-cols-5 px-6 py-6 border-t border-blue-50 hover:bg-blue-50/40 transition">
+
+          <!-- Cliente -->
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 bg-blue-400 rounded-full flex items-center justify-center text-white font-semibold">
+              {{ comentario.name.charAt(0) }}
+            </div>
+            <span class="text-gray-700 font-medium">
+              {{ comentario.name }}
+            </span>
+          </div>
+
+          <!-- Producto -->
+          <div class="text-gray-600">
+            {{ comentario.producto }}
+          </div>
+
+          <!-- Edad -->
+          <div class="text-gray-600">
+            {{ comentario.edad }}
+          </div>
+
+          <!-- Testimonio -->
+          <div class="col-span-2 text-gray-600 italic">
+            "{{ comentario.comen }}"
+          </div>++++++++++++++()
+
+        </div>
+      }
+
+    </div>
+
+  </div>
+</section>
